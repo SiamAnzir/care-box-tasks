@@ -1,12 +1,13 @@
 import './App.css';
+import NavBar from "./components/NavBar";
 import VideoPlayer from "./components/VideoPlayer";
-
 
 const App = () => {
   return(
-      <div className="App">
-        <VideoPlayer/>
-      </div>
+      <section>
+          <NavBar/>
+          <VideoPlayer/>
+      </section>
   )
 }
 
