@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import {fetchVideosData} from "../api/index"
 import ReactPlayer from "react-player";
-import {Card, Container,Button,Col,Row} from "react-bootstrap";
+import {Card, Container,Button,Col,Row,Spinner} from "react-bootstrap";
 
 const VideoPlayer = () => {
     const [videoPlaylist,setVideoPlaylist] = useState([]);
@@ -12,12 +12,11 @@ const VideoPlayer = () => {
             const fetchResult = async () => {
                 const result = await fetchVideosData();
                 setVideoPlaylist(result);
+                setPlayingVideoUrl(result[0].link);
             }
             fetchResult().then(response => response);
         },[]
     );
-    //console.log(videoPlaylist[0]);
-
     const selectedVideoHandler = (video) => {
         setPlayingVideoUrl(video.link);
         setPlayingVideoId(video.id);
@@ -32,16 +31,17 @@ const VideoPlayer = () => {
             </Button>
         </div>
     ))
-
+    if(videoPlaylist === []){
+        return <Spinner animation="grow" variant="light" />;
+    }
     return(
-        <Container className="video-player-page">
+        <Container className="page-container">
             <h1 className="text-center pt-4">Video Player</h1>
             <div className="video-player-card">
                 <Card bg="dark" className="p-4 mt-2">
                     <Row>
                         <Col className="react-player">
-                            {(playingVideoId === 0 ? (<div className="justify-content-center"><h5 className="text-white text-center">Select a video</h5></div>) : (''))}
-                            <ReactPlayer controls url={playingVideoUrl} />
+                            <ReactPlayer controls url={playingVideoUrl}/>
                         </Col>
                         <Col className="pt-5">
                             <h6 className="text-white p-3 pt-4">List of Videos</h6>
