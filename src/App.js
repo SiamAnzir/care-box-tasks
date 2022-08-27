@@ -1,7 +1,7 @@
 import './App.css';
 import NavBar from "./components/NavBar";
 import VideoPlayer from "./components/VideoPlayer";
-import Map from "./components/Map";
+import MapComponent from "./components/MapComponent";
 import {
     BrowserRouter,
     Routes,
@@ -15,7 +15,7 @@ const App = () => {
               <NavBar/>
               <Routes>
                   <Route exact path="/" element={<VideoPlayer/>}/>
-                  <Route exact path="/google-map" element={<Map/>}/>
+                  <Route exact path="/calculate-map-distance" element={<MapComponent/>}/>
                   <Route path="*" element={ <p>"404 NOT FOUND"</p>} />
               </Routes>
           </BrowserRouter>
