@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/care-box-tasks/static/css/main.6230523c.css",
+    "main.js": "/care-box-tasks/static/js/main.fdd19b59.js",
+    "static/js/787.5dfd03dd.chunk.js": "/care-box-tasks/static/js/787.5dfd03dd.chunk.js",
+    "index.html": "/care-box-tasks/index.html",
+    "main.6230523c.css.map": "/care-box-tasks/static/css/main.6230523c.css.map",
+    "main.fdd19b59.js.map": "/care-box-tasks/static/js/main.fdd19b59.js.map",
+    "787.5dfd03dd.chunk.js.map": "/care-box-tasks/static/js/787.5dfd03dd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6230523c.css",
+    "static/js/main.fdd19b59.js"
+  ]
+}
