@@ -1,4 +1,4 @@
-.video-player-page {
+.page-container {
   position: relative;
   margin-top: 5rem;
 }
@@ -6,8 +6,17 @@
   display: flex;
   justify-content: center;
 }
-@media screen and (max-width: 760px){
-
+.map-card  {
+  margin-top: 2%;
+}
+.map-container {
+  border: 10px solid black;
+  left: 1%;
+  width: 100%;
+  height: 70vh;
+}
+.result-card {
+  margin-top: 5%;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
