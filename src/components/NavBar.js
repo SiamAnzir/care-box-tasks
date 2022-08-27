@@ -17,7 +17,7 @@ const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
                         <NavItem> <NavLink to="/" className="text-white text-decoration-none p-4"> Video Player </NavLink> </NavItem>
-                        <NavItem> <NavLink to="google-map" className="text-white text-decoration-none p-4">Google Map  </NavLink> </NavItem>
+                        <NavItem> <NavLink to="calculate-map-distance" className="text-white text-decoration-none p-4">Google Map  </NavLink> </NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
