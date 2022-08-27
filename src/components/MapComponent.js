@@ -9,7 +9,12 @@ const MapComponent = () => {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey:  process.env["NEXT_PUBLIC_GOOGLE_MAPS_API_KEY"] ,
     });
+
+    /** Setting Center of the Map **/
+
     const center = useMemo(() => ({ lat: 23.8103, lng: 90.4125 }), []);
+
+    /** Setting Markers **/
 
     const markers = [{
         id:1,
@@ -18,6 +23,9 @@ const MapComponent = () => {
         id:2,
         position: {lat: 23.813676977644572,lng: 90.42413504023418}
     }]
+
+    /** Calculate Distance with the button Click **/
+
     const calculateDistanceHandler = () => {
         setDistance(mapDistance({
             lat1:23.760553125947684,
@@ -26,6 +34,9 @@ const MapComponent = () => {
             lon2:90.42413504023418
         }))
     }
+
+    /** Forming Post Request **/
+
     const apiToken = 'siamanzir18@gmail.com';
     const headers = {
         'Authorization' : `${apiToken}`,
@@ -44,7 +55,6 @@ const MapComponent = () => {
                 console.log('error')
         }
     }
-    console.log((Math.round(distance * 100) / 100).toFixed(2));
 
     return(
         <Container className="page-container">
@@ -88,7 +98,7 @@ const MapComponent = () => {
                             <Form.Control value="23.813676977644572"/>
                         </InputGroup>
                         <p className="text-center">Calculate Distance between two points</p>
-                        <div style={{display:"flex",justifyContent:'center'}}>
+                        <div className="center-items">
                             <Button onClick={() => calculateDistanceHandler()}>Calculate</Button>
                         </div>
                         <div>
@@ -96,7 +106,7 @@ const MapComponent = () => {
                                 (distance !== 0) ? (
                                     <div>
                                         <h6 className="text-center pt-3">{(Math.round(distance * 100) / 100).toFixed(2)} km </h6>
-                                        <div style={{display:"flex",justifyContent:'center',paddingBottom:'10px'}}>
+                                        <div className="center-items" style={{paddingBottom:'10px'}}>
                                             <Button onClick={() => postRequest()}>Post Response</Button>
                                         </div>
                                     </div>

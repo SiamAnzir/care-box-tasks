@@ -4,24 +4,36 @@ import ReactPlayer from "react-player";
 import {Card, Container,Button,Col,Row,Spinner} from "react-bootstrap";
 
 const VideoPlayer = () => {
+
     const [videoPlaylist,setVideoPlaylist] = useState([]);
     const [playingVideoUrl,setPlayingVideoUrl] = useState('');
     const [playingVideoId,setPlayingVideoId] = useState(0);
+
+    /** Fetch Data From API **/
+
     useEffect(
         () => {
             const fetchResult = async () => {
                 const result = await fetchVideosData();
                 setVideoPlaylist(result);
+
+                /** set default media player **/
+
                 setPlayingVideoUrl(result[0].link);
             }
             fetchResult().then(response => response);
         },[]
     );
+
+    /** change video url with the button handler request **/
+
     const selectedVideoHandler = (video) => {
         setPlayingVideoUrl(video.link);
         setPlayingVideoId(video.id);
     }
-    console.log(playingVideoUrl);
+
+    /** Set video Button with different video id **/
+
     const videoButton = videoPlaylist.map((video) => (
         <div key={video.id} className="p-2">
             <Button
@@ -31,13 +43,17 @@ const VideoPlayer = () => {
             </Button>
         </div>
     ))
-    if(videoPlaylist === []){
+
+    /** Setting Spinner if data fetching needs time **/
+
+    if(!videoPlaylist || !videoButton){
         return <Spinner animation="grow" variant="light" />;
     }
+
     return(
         <Container className="page-container">
             <h1 className="text-center pt-4">Video Player</h1>
-            <div className="video-player-card">
+            <div className="center-items">
                 <Card bg="dark" className="p-4 mt-2">
                     <Row>
                         <Col className="react-player">
